@@ -5,8 +5,6 @@ import argparse
 import io
 import sys
 
-from jsonpath_ng import jsonpath, parse
-
 parser = argparse.ArgumentParser()
 parser.add_argument('--start', help = 'Start date of WFH. ISO8601 date format')
 parser.add_argument('--end', help = 'End date of WFH. ISO8601 date format')
@@ -36,7 +34,6 @@ with open('holidays.txt', 'r') as publicHolidays:
 
 with open('wfh.csv', 'w') as schedule:
     schedule.write('Date, Day, Location\n')
-
 
     for current_date in arrow.Arrow.span_range('day', start, end):
         date = current_date[0]
